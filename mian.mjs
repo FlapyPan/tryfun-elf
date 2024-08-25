@@ -1,6 +1,11 @@
 import { argv } from 'node:process'
 
-const count = parseInt(argv[2]) || 1024
-for (let i = 1 || 32; i <= count; i *= 2) {
-  console.log(`兄弟导${i}下那我就导${i * 2}下`)
+let 该导几次 = parseInt(argv[2]) || 1024
+const 太多了 = 该导几次 > Number.MAX_SAFE_INTEGER
+let 兄弟导的次数 = 太多了 ? 1n : 1
+该导几次 = 太多了 ? BigInt(该导几次) : 该导几次
+const 倍数 = 太多了 ? 2n : 2
+while (兄弟导的次数 <= 该导几次) {
+  console.log(`兄弟导${兄弟导的次数}下那我就导${兄弟导的次数 * 倍数}下`)
+  兄弟导的次数 *= 倍数
 }
